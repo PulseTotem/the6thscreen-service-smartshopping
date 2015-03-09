@@ -10,7 +10,7 @@
 /// <reference path="../t6s-core/core/scripts/infotype/DiscountsList.ts" />
 /// <reference path="../t6s-core/core/scripts/infotype/Discount.ts" />
 
-var uuid = require('node-uuid');
+var uuid : any = require('node-uuid');
 
 class SmartShoppingNamespaceManager extends SourceNamespaceManager {
 
@@ -42,33 +42,34 @@ class SmartShoppingNamespaceManager extends SourceNamespaceManager {
         Logger.debug("RetrieveDiscounts Action with params :");
         Logger.debug(params);
 
-
-
         ///////////////
 
         var nbSend = 0;
 
         self.fetch(function(discounts) {
 
-            /*var discountsList:DiscountsList = new DiscountsList();
-            //var feedContentOk = false;
-            //if(!feedContentOk) {
+            var discountsList:DiscountsList = new DiscountsList();
+
             discountsList.setId(uuid.v1());
             discountsList.setPriority(0);
 
             for(var iDiscount in discounts) {
                 var item : any = discounts[iDiscount];
-                var discount:Discount = new Discount(item.guid, 0, pubDate, pubDate.addDays(7), 10000);
-                feedNode.setTitle(item.title);
-                feedNode.setDescription(item.description);
-                feedNode.setSummary(item.summary);
-                feedNode.setAuthor(item.author);
-                feedNode.setUrl(item.link);
-                if (item.image != null && typeof(item.image) != "undefined" && item.image.url != null && typeof(item.image.url) != "undefined") {
-                    feedNode.setMediaUrl(item.image.url);
+                var discount:Discount = new Discount(item._id, 0, new Date(), new Date(), 10000);
+                discount.setType(item.type);
+                discount.setValue(item.discountValue);
+                var productDesc : any = item.product;
+                discount.setProductId(productDesc._id);
+                discount.setProductName(productDesc.name);
+                discount.setProductBarCode(productDesc.codebar);
+                discount.setProductImage(productDesc.image);
+                if(typeof(productDesc.description) != "undefined") {
+                    discount.setProductDescription(productDesc.description);
+                } else {
+                    discount.setProductDescription("No description.");
                 }
 
-                discountsList.addDiscount(feedNode);
+                discountsList.addDiscount(discount);
             }
 
             nbSend++;
@@ -76,7 +77,6 @@ class SmartShoppingNamespaceManager extends SourceNamespaceManager {
             Logger.debug(discountsList);
 
             self.sendNewInfoToClient(discountsList);
-            */
 
         }, function(err) {
             if (err) {
