@@ -7,8 +7,8 @@
 /// <reference path="../t6s-core/core-backend/scripts/Logger.ts" />
 
 /// <reference path="../t6s-core/core-backend/scripts/server/SourceNamespaceManager.ts" />
-/// <reference path="../t6s-core/core/scripts/infotype/DiscountsList.ts" />
-/// <reference path="../t6s-core/core/scripts/infotype/Discount.ts" />
+/// <reference path="../t6s-core/core-backend/t6s-core/core/scripts/infotype/DiscountsList.ts" />
+/// <reference path="../t6s-core/core-backend/t6s-core/core/scripts/infotype/Discount.ts" />
 
 var uuid : any = require('node-uuid');
 
