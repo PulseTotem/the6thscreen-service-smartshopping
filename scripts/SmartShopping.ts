@@ -5,17 +5,17 @@
 /// <reference path="../t6s-core/core-backend/scripts/server/SourceServer.ts" />
 /// <reference path="../t6s-core/core-backend/scripts/Logger.ts" />
 
-/// <reference path="./RSSFeedReaderNamespaceManager.ts" />
+/// <reference path="./SmartShoppingNamespaceManager.ts" />
 
 
 
 /**
- * Represents the The 6th Screen RSSFeedReader' Service.
+ * Represents the The 6th Screen SmartShopping' Service.
  *
- * @class RSSFeedReader
+ * @class SmartShopping
  * @extends SourceServer
  */
-class RSSFeedReader extends SourceServer {
+class SmartShopping extends SourceServer {
 
 
 
@@ -32,34 +32,34 @@ class RSSFeedReader extends SourceServer {
     }
 
     /**
-     * Method to init the RSSFeedReader server.
+     * Method to init the SmartShopping server.
      *
      * @method init
      */
     init() {
         var self = this;
 
-        this.addNamespace("RSSFeedReader", RSSFeedReaderNamespaceManager);
+        this.addNamespace("SmartShopping", SmartShoppingNamespaceManager);
     }
 }
 
 /**
- * Server's RSSFeedReader listening port.
+ * Server's SmartShopping listening port.
  *
- * @property _RSSFeedReaderListeningPort
+ * @property _SmartShoppingListeningPort
  * @type number
  * @private
  */
-var _RSSFeedReaderListeningPort : number = process.env.PORT_RSSFEEDREADER || 6002;
+var _SmartShoppingListeningPort : number = process.env.PORT_RSSFEEDREADER || 6003;
 
 /**
- * Server's RSSFeedReader command line arguments.
+ * Server's SmartShopping command line arguments.
  *
- * @property _RSSFeedReaderArguments
+ * @property _SmartShoppingArguments
  * @type Array<string>
  * @private
  */
-var _RSSFeedReaderArguments : Array<string> = process.argv;
+var _SmartShoppingArguments : Array<string> = process.argv;
 
-var serverInstance = new RSSFeedReader(_RSSFeedReaderListeningPort, _RSSFeedReaderArguments);
+var serverInstance = new SmartShopping(_SmartShoppingListeningPort, _SmartShoppingArguments);
 serverInstance.run();

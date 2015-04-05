@@ -30,11 +30,6 @@ module.exports = function (grunt) {
             // The "build/target.txt" symlink will be created and linked to
             // "source/target.txt". It should appear like this in a file listing:
             // build/target.txt -> ../source/target.txt
-            core: {
-                src: '<%= coreReposConfig.coreRepoPath %>',
-                dest: 't6s-core/core'
-            },
-
             coreBackend: {
                 src: '<%= coreReposConfig.coreBackendRepoPath %>',
                 dest: 't6s-core/core-backend'
@@ -76,7 +71,7 @@ module.exports = function (grunt) {
                 src: [
                     'scripts/**/*.ts'
                 ],
-                dest: 'build/js/Service-RSSFeedReader.js'
+                dest: 'build/js/Service-SmartShopping.js'
             },
             test: {
                 src: [
@@ -88,11 +83,11 @@ module.exports = function (grunt) {
 
         express: {
             options: {
-                port: 4000
+                port: 4001
             },
             build: {
                 options: {
-                    script: 'build/js/Service-RSSFeedReader.js',
+                    script: 'build/js/Service-SmartShopping.js',
                     args: ["loglevel=debug"]
                 }
             }
@@ -104,7 +99,7 @@ module.exports = function (grunt) {
 // ---------------------------------------------
         watch: {
             express: {
-                files:  [ 'build/js/Service-RSSFeedReader.js' ],
+                files:  [ 'build/js/Service-SmartShopping.js' ],
                 tasks:  [ 'express:build' ],
                 options: {
                     spawn: false
@@ -123,8 +118,8 @@ module.exports = function (grunt) {
 // ---------------------------------------------
         yuidoc: {
             compile: {
-                name: 'The 6th Screen - RSS Feed Reader Service',
-                description: 'RSS Feed Reader Service for The 6th Screen products.',
+                name: 'The 6th Screen - Smart Shopping Service',
+                description: 'Smart Shopping Service for The 6th Screen products.',
                 version: '0.0.1',
                 url: 'http://www.the6thscreen.fr',
                 options: {
